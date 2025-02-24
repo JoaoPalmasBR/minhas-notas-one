@@ -1,11 +1,10 @@
-import { Image, StyleSheet, Platform } from 'react-native';
-import * as FileSystem from 'expo-file-system';
+import { Image, StyleSheet } from 'react-native';
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { useEffect, useState } from 'react';
-import { Asset } from 'expo-asset';
+import { FooterComponent } from 'react-native-screens/lib/typescript/components/ScreenFooter';
 
 
 export default function HomeScreen() {
@@ -14,20 +13,10 @@ export default function HomeScreen() {
   useEffect(() => {
     const loadPosts = async () => {
       try {
-        let response;
-        if (Platform.OS === 'web') {
-          const asset = Asset.fromModule(require('../../assets/posts.json'));
-          await asset.downloadAsync();
-          response = await fetch(asset.uri).then((res) => res.json());
-        } else {
-          const asset = Asset.fromModule(require('../../assets/posts.json'));
-          await asset.downloadAsync();
-          const fileUri = asset.localUri || asset.uri;
-          response = await FileSystem.readAsStringAsync(fileUri);
-          response = JSON.parse(response);
-        }
-        
-        setPosts(response);
+        const response = await fetch('https://raw.githubusercontent.com/JoaoPalmasBR/minhas-notas-one/refs/heads/master/assets/posts.json');
+        const data = await response.json();
+        console.table(data);
+        setPosts(data);
       } catch (error) {
         console.error('Erro ao carregar os posts:', error);
       }
@@ -58,8 +47,9 @@ export default function HomeScreen() {
       {/* Renderize os posts aqui */}
       {posts.map((post, index) => (
         <ThemedView key={index} style={styles.postContainer}>
-          <ThemedText>{post.title}</ThemedText>
-          <ThemedText>{post.content}</ThemedText>
+          <ThemedText>Post ID: {post.id}</ThemedText>
+          <ThemedText>Mensagem: {post.mensagem}</ThemedText>
+          <ThemedText>Usuario: {post.usuario}</ThemedText>
         </ThemedView>
       ))}
 

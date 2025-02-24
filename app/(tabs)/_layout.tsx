@@ -15,7 +15,7 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
       tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-      headerShown: false,
+      headerShown: true,
       tabBarButton: HapticTab,
       tabBarBackground: TabBarBackground,
       tabBarStyle: Platform.select({
@@ -31,6 +31,8 @@ export default function TabLayout() {
       name="index"
       options={{
         title: 'Home',
+        headerShown: false,
+        
         tabBarIcon: ({ color }) => (
           <Image
             source={require('../../assets/images/icon-home.png')} 

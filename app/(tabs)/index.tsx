@@ -15,7 +15,7 @@ export default function HomeScreen() {
       try {
         const response = await fetch('https://raw.githubusercontent.com/JoaoPalmasBR/minhas-notas-one/refs/heads/master/assets/posts.json');
         const data = await response.json();
-        console.table(data);
+        //console.table(data);
         setPosts(data);
       } catch (error) {
         console.error('Erro ao carregar os posts:', error);

@@ -13,3 +13,10 @@
    ```bash
     npx expo start
    ```
+
+
+3. Posts são carregados diretamente do caminho:
+
+```link
+https://raw.githubusercontent.com/JoaoPalmasBR/minhas-notas-one/refs/heads/master/assets/posts.json
+```

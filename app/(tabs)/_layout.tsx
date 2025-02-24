@@ -7,6 +7,7 @@ import { IconSymbol } from '@/components/ui/IconSymbol';
 import TabBarBackground from '@/components/ui/TabBarBackground';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
+import { MaterialIcons } from '@expo/vector-icons';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -34,10 +35,7 @@ export default function TabLayout() {
         headerShown: false,
         
         tabBarIcon: ({ color }) => (
-          <Image
-            source={require('../../assets/images/icon-home.png')} 
-            style={{ width: 28, height: 28, borderRadius: 14 }}
-          />
+          <MaterialIcons name="home" size={28} color={color} />
         ),
       }}
       />
@@ -45,11 +43,8 @@ export default function TabLayout() {
       name="perfil"
       options={{
         title: 'Perfil',
-        tabBarIcon: ({ color }) => (
-        <Image
-          source={require('../../assets/images/icon-profile.png')} 
-          style={{ width: 28, height: 28, borderRadius: 14 }}
-        />
+        tabBarIcon: ({ color }) => (    
+          <MaterialIcons name="person" size={28} color={color} />
         ),
       }}
       />

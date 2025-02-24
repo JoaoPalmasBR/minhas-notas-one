@@ -1,0 +1,27 @@
+[
+    {
+        "id": 1,
+        "usuario": 101,
+        "mensagem": "Esta é a primeira mensagem de exemplo"
+    },
+    {
+        "id": 2,
+        "usuario": 102,
+        "mensagem": "Esta é a segunda mensagem de exemplo"
+    },
+    {
+        "id": 3,
+        "usuario": 103,
+        "mensagem": "Esta é a terceira mensagem de exemplo"
+    },
+    {
+        "id": 4,
+        "usuario": 104,
+        "mensagem": "Esta é a quarta mensagem de exemplo"
+    },
+    {
+        "id": 5,
+        "usuario": 105,
+        "mensagem": "Esta é a quinta mensagem de exemplo"
+    }
+]

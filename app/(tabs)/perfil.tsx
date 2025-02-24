@@ -1,4 +1,4 @@
-import { StyleSheet, Image, Platform, ImageComponent, TextInput } from 'react-native';
+import { StyleSheet, Image, Platform, ImageComponent, TextInput, Button, View } from 'react-native';
 
 import { Collapsible } from '@/components/Collapsible';
 import { ExternalLink } from '@/components/ExternalLink';
@@ -14,8 +14,8 @@ import { useState, useEffect } from 'react';
 export default function TabTwoScreen() {
   const [idUsuario, setIdUsuario] = useState<string | null>(null);
   const [usuario, setUsuario] = useState<{ nome: string }>({ nome: 'Visitante' });
+  const [novoNome, setNovoNome] = useState<string>('');
 
-  const [text, onChangeText] = React.useState('Useless Text');
   useEffect(() => {
     const getUsuario = async () => {
       try {
@@ -36,6 +36,16 @@ export default function TabTwoScreen() {
     };
     getUsuario();
   }, []);
+  const salvarNome = async () => {
+    try {
+      const usuarioAtualizado = { id: idUsuario, ...usuario, nome: novoNome };
+      await AsyncStorage.setItem('usuario', JSON.stringify(usuarioAtualizado));
+      setUsuario(usuarioAtualizado);
+      setNovoNome('');
+    } catch (error) {
+      console.error('Erro ao salvar o nome do usuário:', error);
+    }
+  };
 
   return (
     <ParallaxScrollView
@@ -51,6 +61,15 @@ export default function TabTwoScreen() {
         <ThemedText type="title">{usuario.nome}</ThemedText>
       </ThemedView>
 
+      <View style={styles.formContainer}>
+        <TextInput
+          style={styles.input}
+          onChangeText={setNovoNome}
+          value={novoNome}
+          placeholder={usuario.nome}
+        />
+        <Button title="Salvar Nome" onPress={salvarNome} />
+      </View>
       
     </ParallaxScrollView>
   );
@@ -72,5 +91,16 @@ const styles = StyleSheet.create({
     height: 250,
     borderRadius: 50,
     alignSelf: 'center',
+  },
+  formContainer: {
+    padding: 16,
+  },
+  input: {
+    height: 40,
+    borderColor: '#ccc',
+    borderWidth: 1,
+    paddingHorizontal: 8,
+    borderRadius: 4,
+    marginBottom: 16,
   },
 });

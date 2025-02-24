@@ -1,6 +1,6 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
-import { Platform } from 'react-native';
+import { Platform, Image } from 'react-native';
 
 import { HapticTab } from '@/components/HapticTab';
 import { IconSymbol } from '@/components/ui/IconSymbol';
@@ -14,31 +14,42 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-        tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({
-          ios: {
-            // Use a transparent background on iOS to show the blur effect
-            position: 'absolute',
-          },
-          default: {},
-        }),
+      tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+      headerShown: false,
+      tabBarButton: HapticTab,
+      tabBarBackground: TabBarBackground,
+      tabBarStyle: Platform.select({
+        ios: {
+        // Use a transparent background on iOS to show the blur effect
+        position: 'absolute',
+        },
+        default: {},
+      }),
+      tabBarLabel: () => null, // Hide the title
       }}>
       <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
-        }}
+      name="index"
+      options={{
+        title: 'Home',
+        tabBarIcon: ({ color }) => (
+          <Image
+            source={require('../../assets/images/icon-home.png')} 
+            style={{ width: 28, height: 28, borderRadius: 14 }}
+          />
+        ),
+      }}
       />
       <Tabs.Screen
-        name="perfil"
-        options={{
-          title: 'Perfil',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
-        }}
+      name="perfil"
+      options={{
+        title: 'Perfil',
+        tabBarIcon: ({ color }) => (
+        <Image
+          source={require('../../assets/images/icon-profile.png')} 
+          style={{ width: 28, height: 28, borderRadius: 14 }}
+        />
+        ),
+      }}
       />
     </Tabs>
   );

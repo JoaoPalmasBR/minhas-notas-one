@@ -17,6 +17,7 @@ export default function TabLayout() {
       screenOptions={{
       tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
       headerShown: true,
+  
       tabBarButton: HapticTab,
       tabBarBackground: TabBarBackground,
       tabBarStyle: Platform.select({
@@ -48,6 +49,20 @@ export default function TabLayout() {
         ),
       }}
       />
+      <Tabs.Screen 
+        name='post' 
+        options={
+          {
+            tabBarItemStyle: {
+              display: 'none' 
+            },
+            href: null,
+            tabBarStyle: {
+              display: 'none'
+            }
+          }
+        }>
+      </Tabs.Screen>
     </Tabs>
   );
 }

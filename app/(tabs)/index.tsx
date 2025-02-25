@@ -1,10 +1,11 @@
-import { Image, StyleSheet } from 'react-native';
+import { Image, StyleSheet, Text } from 'react-native';
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { useEffect, useState } from 'react';
 import { FooterComponent } from 'react-native-screens/lib/typescript/components/ScreenFooter';
+import { Link } from 'expo-router';
 
 
 export default function HomeScreen() {
@@ -49,8 +50,9 @@ export default function HomeScreen() {
             <ThemedText type="default">Post #{post.id}</ThemedText>
           </ThemedView>
           <ThemedView style={styles.cardBody}>
-            <ThemedText type="title">{post.mensagem}</ThemedText>
-            <ThemedText>Usuario: {post.usuario}</ThemedText>
+            <Text style={styles.title}>{post.mensagem}</Text>
+            <Text href={"(tabs)/post/"+post.id} style={styles.link}>Leia mais</Text>
+            <Text>Usuario: {post.usuario}</Text>
           </ThemedView>
         </ThemedView>
       ))}
@@ -66,6 +68,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 8,
+  },
+  link: {
+    color: '#3498db',
+    textDecorationLine: 'underline',
+  },
+  title: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 8,
   },
   stepContainer: {
     gap: 8,

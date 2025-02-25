@@ -32,24 +32,26 @@ export default function HomeScreen() {
           style={styles.reactLogo}
         />
       }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
 
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-
-      {/* Renderize os posts aqui */}
-      {posts.map((post, index) => (
-        <ThemedView key={index} style={styles.postContainer}>
-          <ThemedText>Post ID: {post.id}</ThemedText>
-          <ThemedText>Mensagem: {post.mensagem}</ThemedText>
-          <ThemedText>Usuario: {post.usuario}</ThemedText>
+      {//posts.map((post, index) => (
+        
+        //<ThemedView key={index} style={styles.postContainer}>
+          //<ThemedText>Post ID: {post.id}</ThemedText>
+          //<ThemedText>Mensagem: {post.mensagem}</ThemedText>
+          //<ThemedText>Usuario: {post.usuario}</ThemedText>
+        //</ThemedView>
+      //))
+      }  
+      {
+      posts.map((post, index) => (
+        <ThemedView key={index} style={styles.cardContainer}>
+          <ThemedView style={styles.cardHeader}>
+            <ThemedText type="default">Post #{post.id}</ThemedText>
+          </ThemedView>
+          <ThemedView style={styles.cardBody}>
+            <ThemedText type="title">{post.mensagem}</ThemedText>
+            <ThemedText>Usuario: {post.usuario}</ThemedText>
+          </ThemedView>
         </ThemedView>
       ))}
 
@@ -80,5 +82,25 @@ const styles = StyleSheet.create({
     padding: 16,
     borderBottomWidth: 1,
     borderBottomColor: '#ccc',
+  },
+    cardContainer: {
+    margin: 16,
+    backgroundColor: '#fff',
+    borderRadius: 8,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  cardHeader: {
+    padding: 16,
+    backgroundColor: '#3498db',
+  },
+  cardBody: {
+    padding: 16,
   },
 });

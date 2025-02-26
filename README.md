@@ -43,5 +43,5 @@
    [GitHub - servidor-posts](https://github.com/JoaoPalmasBR/servidor-posts)
 
    ```URL
-   (https://github.com/JoaoPalmasBR/servidor-posts)
+   https://github.com/JoaoPalmasBR/servidor-posts
    ```

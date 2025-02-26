@@ -1,14 +1,15 @@
-import { Text, View, Image, StyleSheet } from "react-native";
-import { Link } from "expo-router";
-import { useLocalSearchParams } from 'expo-router';
+import { StyleSheet, TouchableOpacity } from "react-native";
+import { Link, useLocalSearchParams } from 'expo-router';
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigation } from "@react-navigation/native";
 
 
 export default function Post() {
   const { id } = useLocalSearchParams();
   const [post, setPost] = useState<any>(null);
+  const navigation = useNavigation();
   const styles = StyleSheet.create({
     postContainer: {
       padding: 16,
@@ -64,9 +65,11 @@ export default function Post() {
     <ThemedView style={styles.cardContainer}>
       <ThemedText style={styles.cardContainer}>{post.mensagem}</ThemedText>
       <ThemedText>Usuario: {post.usuario}</ThemedText>
-      <Link href={"/"} style={styles.link}>
-        <ThemedText>Voltar</ThemedText>
-      </Link>
+      <ThemedView style={styles.link}>
+        <Link href="/">
+          <ThemedText>Voltar</ThemedText>
+        </Link>
+      </ThemedView>
     </ThemedView>
   );
 }

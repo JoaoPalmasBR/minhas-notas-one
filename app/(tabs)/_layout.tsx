@@ -48,14 +48,7 @@ export default function TabLayout() {
         ),
       }}
       />
-      <Tabs.Screen
-      name="post"
-      options={{
-        title: 'Post',
-        tabBarButton: () => null, // Hide the tab
-        
-      }}
-      />
+      
     </Tabs>
   );
 }

@@ -47,11 +47,11 @@ export default function HomeScreen() {
       posts.map((post, index) => (
         <ThemedView key={index} style={styles.cardContainer}>
           <ThemedView style={styles.cardHeader}>
-            <ThemedText type="default">Post #{post.id}</ThemedText>
+            <ThemedText type="default" style={{ color: '#FFFFFF' }}>Post #{post.id}</ThemedText>
           </ThemedView>
           <ThemedView style={styles.cardBody}>
             <Text style={styles.title}>{post.mensagem}</Text>
-            <Text href={"(tabs)/post/"+post.id} style={styles.link}>Leia mais</Text>
+            <Text href={"/post/"+post.id} style={styles.link}>Leia mais</Text>
             <Text>Usuario: {post.usuario}</Text>
           </ThemedView>
         </ThemedView>
@@ -109,7 +109,8 @@ const styles = StyleSheet.create({
   },
   cardHeader: {
     padding: 16,
-    backgroundColor: '#3498db',
+    backgroundColor: 'black',
+    color: 'white'
   },
   cardBody: {
     padding: 16,

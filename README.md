@@ -41,3 +41,7 @@
 5. O código do projeto está disponível no GitHub:
 
    [GitHub - servidor-posts](https://github.com/JoaoPalmasBR/servidor-posts)
+
+   ```URL
+   (https://github.com/JoaoPalmasBR/servidor-posts)
+   ```

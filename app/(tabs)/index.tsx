@@ -15,7 +15,13 @@ export default function HomeScreen() {
   useEffect(() => {
     const loadPosts = async () => {
       try {
-        const response = await fetch('https://raw.githubusercontent.com/JoaoPalmasBR/minhas-notas-one/refs/heads/master/assets/posts.json');
+        const response = await fetch('https://cors-anywhere.herokuapp.com/https://servidor-posts.onrender.com/posts', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Origin': 'x-requested-with',
+          }
+        });
         const data = await response.json();
         //console.table(data);
         setPosts(data);
@@ -34,22 +40,23 @@ export default function HomeScreen() {
           style={styles.reactLogo}
         />
       }>
-      {
-      posts.map((post, index) => (
-        <ThemedView key={index} style={styles.cardContainer}>
-          <ThemedView style={styles.cardHeader}>
-            <ThemedText type="default" style={{ color: '#FFFFFF' }}>Post #{post.id}</ThemedText>
-          </ThemedView>
-          <ThemedView style={styles.cardBody}>
-            <Text style={styles.title}>{post.mensagem}</Text>
-            <Text href={"/post/"+post.id} style={styles.link}>Leia mais</Text>
-            <Text>Usuario: {post.usuario}</Text>
-          </ThemedView>
-        </ThemedView>
-      ))}
 
-      
-      
+      {
+        posts.map((post, index) => (
+          <ThemedView key={index} style={styles.cardContainer}>
+            <ThemedView style={styles.cardHeader}>
+              <ThemedText type="default" style={{ color: '#FFFFFF' }}>Post #{post.id}</ThemedText>
+            </ThemedView>
+            <ThemedView style={styles.cardBody}>
+              <Text style={styles.title}>{post.mensagem}</Text>
+              <Text href={"/post/" + post.id} style={styles.link}>Leia mais</Text>
+              <Text>Usuario: {post.usuario}</Text>
+            </ThemedView>
+          </ThemedView>
+        ))}
+
+
+
     </ParallaxScrollView>
   );
 }

@@ -37,3 +37,7 @@
    ```JSON
    {"id":1,"nome":"NOME DESEJADO"}
    ```
+
+5. O código do projeto está disponível no GitHub:
+
+   [GitHub - servidor-posts](https://github.com/JoaoPalmasBR/servidor-posts)

@@ -16,6 +16,12 @@ export default function Post() {
       borderBottomWidth: 1,
       borderBottomColor: '#ccc',
     },
+    cardMessage: {
+      padding: 50,
+      borderRadius: 5,
+      fontSize: 16,
+      color: '#333',
+    },
     cardContainer: {
       margin: 16,
       backgroundColor: '#fff',
@@ -41,6 +47,24 @@ export default function Post() {
       textDecorationLine: 'underline',
       marginTop: 16,
     },
+    link2: {
+      color: '#3498db',
+      textDecorationLine: 'underline line-through',
+      borderWidth: 1,
+      borderColor: '#fff',
+      padding: 10,
+      textAlign: 'center',
+      borderRadius: 5,
+      backgroundColor: '#3498db',
+
+    },
+    cardFooter: {
+      padding: 16,
+      backgroundColor: '#ecf0f1',
+      borderTopWidth: 1,
+      borderTopColor: '#ccc',
+      textAlign: 'right',
+    },
   });
 
   useEffect(() => {
@@ -63,9 +87,15 @@ export default function Post() {
 
   return (
     <ThemedView style={styles.cardContainer}>
-      <ThemedText style={styles.cardContainer}>{post.mensagem}</ThemedText>
-      <ThemedText>Usuario: {post.usuario}</ThemedText>
-      <ThemedView style={styles.link}>
+      <ThemedText style={styles.cardHeader}>Post #{post.id}</ThemedText>
+      <ThemedText style={styles.cardMessage}>
+        {post.mensagem}
+      </ThemedText>
+      <ThemedText style={styles.cardFooter}>
+        Usuario: {post.usuario}
+      </ThemedText>
+      
+      <ThemedView style={styles.link2}>
         <Link href="/">
           <ThemedText>Voltar</ThemedText>
         </Link>

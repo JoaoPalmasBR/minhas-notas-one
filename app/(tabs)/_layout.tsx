@@ -34,7 +34,6 @@ export default function TabLayout() {
       options={{
         title: 'Home',
         headerShown: false,
-        
         tabBarIcon: ({ color }) => (
           <MaterialIcons name="home" size={28} color={color} />
         ),
@@ -49,20 +48,14 @@ export default function TabLayout() {
         ),
       }}
       />
-      <Tabs.Screen 
-        name='post' 
-        options={
-          {
-            tabBarItemStyle: {
-              display: 'none' 
-            },
-            href: null,
-            tabBarStyle: {
-              display: 'none'
-            }
-          }
-        }>
-      </Tabs.Screen>
+      <Tabs.Screen
+      name="post"
+      options={{
+        title: 'Post',
+        tabBarButton: () => null, // Hide the tab
+        
+      }}
+      />
     </Tabs>
   );
 }

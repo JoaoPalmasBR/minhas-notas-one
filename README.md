@@ -38,10 +38,10 @@
    {"id":1,"nome":"NOME DESEJADO"}
    ```
 
-5. O código do projeto está disponível no GitHub:
+5. O projeto do SERVIDOR com os dados está disponível no GitHub:
 
    [GitHub - servidor-posts](https://github.com/JoaoPalmasBR/servidor-posts)
 
-   ```URL
+   ```link
    https://github.com/JoaoPalmasBR/servidor-posts
    ```
